@@ -28,7 +28,7 @@
                 {% for x in productos %}
                     <tr>
                         <td>{{x.nombre}}</td>
-                        <td><a href="">Eliminar</a></td>
+                        <td><a href="{% url 'productos_del' pk=x.id_producto %}">Eliminar</a></td>
                         <td><a href="">Modificar</a></td>
                     </tr>
                 {% endfor %}
