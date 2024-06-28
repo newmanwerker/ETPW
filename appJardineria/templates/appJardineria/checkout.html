@@ -14,48 +14,52 @@
     </head>
     <body>
         <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg ">
-        <!-- Navbar content -->
-        <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto d-flex">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'home' %}">
-                        <img src="https://i.imgur.com/xuD3K4k.png" alt="Inicio" style="height: 45px;">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'nosotros' %}">
-                        <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'productos' %}">
-                        <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacto' %}">
-                        <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
-                    </a>
-                </li>            
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 45px;">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarCart">
-                        <div id="cartItems"></div>
-                        <div class="dropdown-divider"></div>
-                        <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
-                        <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <nav class="navbar navbar-expand-lg ">
+            <!-- Navbar content -->
+            <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto d-flex">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">
+                            <img src="https://i.imgur.com/xuD3K4k.png" alt="Inicio" style="height: 45px;">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nosotros' %}">
+                            <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownProductos">
+                            <a class="dropdown-item" href="{% url 'productosAdd' %}">Agregar producto</a>
+                            <a class="dropdown-item" href="{% url 'productos' %}">Ver productos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacto' %}">
+                            <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
+                        </a>
+                    </li>            
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 45px;">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarCart">
+                            <div id="cartItems"></div>
+                            <div class="dropdown-divider"></div>
+                            <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
+                            <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <!-- Detalle de la compra -->
         <div class="container mt-5">

@@ -13,7 +13,7 @@
 
 </head>
 <body>
-       <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg ">
         <!-- Navbar content -->
         <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
@@ -32,10 +32,14 @@
                         <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'productos' %}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownProductos">
+                        <a class="dropdown-item" href="{% url 'productosAdd' %}">Agregar producto</a>
+                        <a class="dropdown-item" href="{% url 'productos' %}">Ver productos</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contacto' %}">
@@ -56,8 +60,9 @@
             </ul>
         </div>
     </nav>
+    
 
-   <div class="card col-md-6 mx-auto">
+    <div class="card col-md-6 mx-auto">
         <div class="card-body">
             <!-- Formulario de contacto -->
             <div class="container mt-5">
@@ -95,7 +100,7 @@
                 </form>
             </div>
         </div>
-   </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 border-footer">
