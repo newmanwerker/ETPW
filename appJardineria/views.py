@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Producto,Categoria
 from .forms import ProductoForm
 
@@ -46,6 +47,7 @@ def productosAdd(request):
             
             #limpiar form
             form=ProductoForm()
+            
             context={'mensaje':"Ok, datos grabados...","form":form}
             return render(request, 'appJardineria/productosAdd.html', context)
     else:
@@ -71,3 +73,34 @@ def productos_del(request,pk):
         mensaje="Error al eliminar producto"
         context={'mensaje':mensaje, 'productos':productos}
         return render(request, 'appJardineria/productos_list.html', context)
+    
+
+
+def productos_edit(request,pk):
+    try:
+        producto=Producto.objects.get(id_producto=pk)
+        context={}
+        if producto:
+            print("Producto encontrado")
+            if request.method == "POST":
+                print("ESTO ES UN POST")
+                form=ProductoForm(request.POST, instance=producto)
+                form.save()
+                mensaje="Bien, datos actualizados..."
+                print(mensaje)
+                context= { 'producto':producto, 'form': form,'mensaje': mensaje}
+                return render(request,'appJardineria/productos_edit.html', context)
+            else:
+                #no es un post
+                print("No es un post")
+                form=ProductoForm(instance=producto)
+                mensaje=""
+                context={'producto':producto, 'form':form,'mensaje':mensaje}
+                return render(request, 'appJardineria/productos_edit.html', context)
+    except:
+        print("Error, id no existe")
+        productos=Producto.objects.all()
+        mensaje="Error, id no existe"
+        context={'mensaje':mensaje, 'productos':productos}
+        return render(request, 'appJardineria/productos_list.html', context)
+

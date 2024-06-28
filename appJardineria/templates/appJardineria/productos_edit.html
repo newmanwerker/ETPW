@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        {% if producto %}
+            <h2>Formulario Actualizar Productos</h2>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_table}}
+                <input type="submit" name="opcion" value="Actualizar">
+
+            </form> <br> <br>
+        {% endif %}
+        <div id="idMensajes">
+            {% if mensaje %}
+                {{mensaje}}
+            {% endif %}
+        </div>
+    </div>
+    <br><br>
+    <a href="{% url 'productos_list'}"></a>
+</body>
+</html>
