@@ -26,7 +26,6 @@ def checkout(request):
     context={}
     return render(request, 'appJardineria/checkout.html', context)
 
-
 def productos_list(request):
     productos=Producto.objects.all()
     context={'productos':productos}
@@ -36,24 +35,29 @@ def productos_list(request):
 
 def productosAdd(request):
     print("Enviando datos de productos_add")
-    context={}
+    context = {}
 
-    if request.method=="POST":
+    if request.method == "POST":
         print("controlador es un post")
-        form=ProductoForm(request.POST)
+        form = ProductoForm(request.POST)
         if form.is_valid():
             print("formulario es valido")
             form.save()
             
-            #limpiar form
-            form=ProductoForm()
-            
-            context={'mensaje':"Ok, datos grabados...","form":form}
-            return render(request, 'appJardineria/productosAdd.html', context)
-    else:
-        form= ProductoForm()
-        context={'form':form}
+            # limpiar form
+            form = ProductoForm()
+            context = {'mensaje': "Ok, datos grabados...", "form": form}
+        else:
+            print("formulario no es valido")
+            print(form.errors)
+            context = {'form': form}
         return render(request, 'appJardineria/productosAdd.html', context)
+    
+    else:
+        form = ProductoForm()
+        context = {'form': form}
+        return render(request, 'appJardineria/productosAdd.html', context)
+
     
 def productos_del(request,pk):
     mensajes=[]
