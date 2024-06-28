@@ -23,3 +23,7 @@ def contacto(request):
 def checkout(request):
     context={}
     return render(request, 'appJardineria/checkout.html', context)
+
+def producto_add(request):
+    context={}
+    return render(request, 'appJardineria/producto_add.html', context)
