@@ -39,7 +39,7 @@ def productosAdd(request):
 
     if request.method == "POST":
         print("controlador es un post")
-        form = ProductoForm(request.POST)
+        form = ProductoForm(request.POST,request.FILES)
         if form.is_valid():
             print("formulario es valido")
             form.save()
@@ -88,7 +88,7 @@ def productos_edit(request,pk):
             print("Producto encontrado")
             if request.method == "POST":
                 print("ESTO ES UN POST")
-                form=ProductoForm(request.POST, instance=producto)
+                form=ProductoForm(request.POST,request.FILES, instance=producto)
                 form.save()
                 mensaje="Bien, datos actualizados..."
                 print(mensaje)
