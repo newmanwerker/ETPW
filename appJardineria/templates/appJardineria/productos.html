@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>LHola</title>
+</head>
+<body>
+    <div class="title-container">
+        <h1>Listar productos</h1>
+    </div>
+    
+    <div class="card-container">
+        {% for producto in productos %}
+            <div class="card">
+                <img src="{{ producto.imagen.url }}" alt="Foto de {{ producto.nombre }}">
+                <p>{{ producto.nombre }}</p>
+                <p>{{ producto.precio }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
