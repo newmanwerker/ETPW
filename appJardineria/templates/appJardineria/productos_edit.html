@@ -10,7 +10,7 @@
         {% if producto %}
             <h2>Formulario Actualizar Productos</h2>
 
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{form.as_table}}
                 <input type="submit" name="opcion" value="Actualizar">
@@ -24,6 +24,6 @@
         </div>
     </div>
     <br><br>
-    <a href="{% url 'productos_list'}"></a>
+    <a href="{% url 'productos_list'}">Volver</a>
 </body>
 </html>
