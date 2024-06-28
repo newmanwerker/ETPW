@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{x.nombre}}</td>
                         <td><a href="{% url 'productos_del' pk=x.id_producto %}">Eliminar</a></td>
-                        <td><a href="">Modificar</a></td>
+                        <td><a href="{% url 'productos_edit' pk=x.id_producto %}">Modificar</a></td>
                     </tr>
                 {% endfor %}
             {% endif %}
