@@ -52,3 +52,22 @@ def productosAdd(request):
         form= ProductoForm()
         context={'form':form}
         return render(request, 'appJardineria/productosAdd.html', context)
+    
+def productos_del(request,pk):
+    mensajes=[]
+    errores=[]
+    productos=Producto.objects.all()
+    try:
+        producto=Producto.objects.get(id_producto=pk)
+        context={}
+        if producto:
+            producto.delete()
+            mensajes.append("Producto eliminado")
+            context= {'productos':productos, 'mensajes':mensajes, 'errores':errores}
+            return render(request, 'appJardineria/productos_list.html', context)
+    except:
+        print("Error al eliminar producto")
+        productos=Producto.objects.all()
+        mensaje="Error al eliminar producto"
+        context={'mensaje':mensaje, 'productos':productos}
+        return render(request, 'appJardineria/productos_list.html', context)

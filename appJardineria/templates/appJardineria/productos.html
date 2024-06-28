@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Productos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -69,7 +68,7 @@
     <div class="title-container">
             <h1>Listar productos</h1>
             <!-- BOTON PARA AGREGAR PRODUCTOS NUEVOS -->
-            <a id="BTN1" href="{% url 'producto_add' %}" class="btn btn-primary">Gestion de productos</a>
+            <a id="BTN1" href="{% url 'productosAdd' %}" class="btn btn-primary">Gestion de productos</a>
             <a href="{% url 'productosAdd' %}" class="btn btn-primary">Agregar Producto Nuevo</a>
         
         <div class="card-container card">
