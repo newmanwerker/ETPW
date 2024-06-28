@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Producto
+from .models import Producto,Categoria
+from .forms import ProductoForm
 
 # Create your views here.
 def productos(request):
@@ -24,6 +25,30 @@ def checkout(request):
     context={}
     return render(request, 'appJardineria/checkout.html', context)
 
-def producto_add(request):
+
+def productos_list(request):
+    productos=Producto.objects.all()
+    context={'productos':productos}
+    print("Enviando datos de productos_list")
+    return render(request, 'appJardineria/productos_list.html', context)
+
+
+def productosAdd(request):
+    print("Enviando datos de productos_add")
     context={}
-    return render(request, 'appJardineria/producto_add.html', context)
+
+    if request.method=="POST":
+        print("controlador es un post")
+        form=ProductoForm(request.POST)
+        if form.is_valid():
+            print("formulario es valido")
+            form.save()
+            
+            #limpiar form
+            form=ProductoForm()
+            context={'mensaje':"Ok, datos grabados...","form":form}
+            return render(request, 'appJardineria/productosAdd.html', context)
+    else:
+        form= ProductoForm()
+        context={'form':form}
+        return render(request, 'appJardineria/productosAdd.html', context)
