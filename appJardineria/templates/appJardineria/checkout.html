@@ -1,0 +1,125 @@
+{% load static %}
+<!-- HTML -->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jardinería Urban Roots</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <link rel="icon" href="https://i.imgur.com/TZnEcFJ.png">
+
+    </head>
+    <body>
+        <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg ">
+        <!-- Navbar content -->
+        <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto d-flex">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <img src="https://i.imgur.com/xuD3K4k.png" alt="Inicio" style="height: 45px;">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'nosotros' %}">
+                        <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos' %}">
+                        <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacto' %}">
+                        <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
+                    </a>
+                </li>            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 45px;">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarCart">
+                        <div id="cartItems"></div>
+                        <div class="dropdown-divider"></div>
+                        <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
+                        <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+        <!-- Detalle de la compra -->
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="text-center" style="color: white; background-color: #faae50; font-family: Cambria, Cochin, 'Georgia', Times, Times New Roman, serif;">DETALLE DE LA COMPRA</h2>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="color: white; background-color: #faae50;">| PRODUCTOS |</th>
+                                        <th scope="col" style="color: white; background-color: #faae50;">| PRECIO |</th>
+                                        <th scope="col" style="color: white; background-color: #faae50;">| EIMINAR |</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartDetails">
+                                    <!-- Detalle del carrito -->
+                                </tbody>
+                            </table>
+                            <div id="cartTotal" class="text-center mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 border-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <strong>© 2024 UrbanRoots</strong>
+                        <p>Todos los derechos reservados.</p>
+                        <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+                        <p>Teléfono: (+123) 456-7890</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Correo Electrónico:</strong> info@nombreempresa.com</p>
+                        <p><strong>Horarios de Atención:</strong> Lunes a Viernes: 9:00 AM - 6:00 PM | Sábados: 10:00 AM - 4:00 PM</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Políticas:</strong> <a href="#">Términos y Condiciones</a> | <a href="#">Política de Privacidad</a></p>
+                        <p><strong>Nuestra misión:</strong> Traer la naturaleza a tu hogar con las mejores plantas y el servicio más dedicado. ¡Gracias por elegirnos para embellecer tus espacios!</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- Custom JS -->
+        <script src="{% static 'js/logic.js' %}"></script>
+
+        <script>
+            displayCart();
+            calculateTotal();
+            displayCartDetails();
+            document.querySelector('.text-right h4').innerText = 'Total: $' + new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(total).split(',')[0];
+        </script>
+    </body>
+</html>

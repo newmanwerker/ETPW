@@ -1,128 +1,206 @@
 body {
-    background: linear-gradient(to right, #cc7ad2, #9467f7);
-    padding: 0;
-    margin: 0;
+    font-family: 'Roboto',sans-serif;
+    background: linear-gradient(to bottom  , #096965, #DDDED6, #025855);
+    font-weight: bold;
+}
+h2{
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+}
+.footer{    
+    font-family: 'Roboto',sans-serif;
+    background:#02585500;
+    color:rgb(0, 0, 0);
+    font-weight: bold;
+}
+.border-footer{
+    border-top: 1px solid #025855;
+}
+
+/* CARRUSEL */
+.carousel-item img {
+    object-fit: fill; /* or 'contain' depending on your needs */   
+}
+
+.carousel-redirect{
+    cursor: pointer;
+}
+
+.carousel-item:hover {
+    transition: 1s;
+    opacity: 0.5;
+}
+
+.carousel-item:not(:hover) {
+    transition: 1s;
+    opacity: 1;
+}
+
+.carousel-caption {
+    white-space: nowrap;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%; /* Make the caption as wide as its container */
+}
+
+/* CARRITO DE COMPRA */
+.add-to-cart-button {
+    font-family: 'Roboto';
+    font-weight: bold;
+    background-color: #F29422; /* Green background */
+    border: none; /* No border */
+    color: white; /* White text */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 12px; /* Rounded corners */
+    transition: background-color 0.4s, color 0.4s;
+    transition-duration: 0.4s; /* Transition effect */
+}
+.add-to-cart-button:before {
+content: attr(data-price); /* Show price by default */
+}
+.add-to-cart-button:hover:before { 
+content: 'Añadir al carrito'; /* Show 'Add to cart' on hover */
+transition: 1.4s; /* Transition effect */
+}
+
+.add-to-cart-button{
+    padding: 14px 40px;
+}
+.add-to-cart-button:hover {
+    background-color: #c97b1b; /* Green background on hover */
+    transition: 1.4s;
+}
+.totalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+/* AJUSTES DE NAVBAR */
+.navbar {
+    background-color: #02585500;
+    color: white;   
+}
+
+.navbar-nav .nav-link :hover{
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
+.product {
+    flex: 1 0 30%;
+    margin: 1%;
+    font-family: 'Roboto',sans-serif;
+}
+
+.product-image {
+    text-align: center;    
+}
+
+.product-image:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+}
+
+/* CARDS */
+.card-text {
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    color: rgb(255, 250, 250);
+    background-color: #02585500;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-text2 {
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background-color: #02585500;
+    padding: 10px;
+    text-align: center;
+}
+
+.above-card{
+    text-align:center;
+    margin-bottom: 10px;
 }
 
 .card {
-    background: linear-gradient(to right, #6132f9, #5026aa);
-    width: 300px;
-    height: 400px;
-    border: 1px solid #191717;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.title-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    background-color: #02585500;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin: 10px;
     text-align: center;
-    width: 100%;
+    border: 1px solid #025855;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,1);
 }
 
-form .txt_field{
-    position: relative;
-    border-bottom: 2px solid #adadad;
-    margin: 30px 0;
-}
-.txt_field input{
-    width: 100%;
-    padding: 0 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-}
-.txt_field label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
-}
-.txt_field span::before{
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: #2691d9;
-    transition: .5s;
-}
-.txt_field input:focus ~ label,
-.txt_field input:valid ~ label{
-    top: -5px;
-    color: #2691d9;
-
-}
-.txt_field input:focus ~ span::before,
-.txt_field input:valid ~ span::before{
-    width: 100%;
+.card-hover{
+    transition: transform 0.5s ease;
 }
 
-.pass{
-    margin: -5px 0 20px 5px;
-    color: #a6a6a6;
-    cursor: pointer;
-}
-.pass:hover{
-    text-decoration: underline;
+.card-hover:hover{
+    filter: blur(1px) brightness(0.7);
+    transform: scale(1.1);
 }
 
-.signup_link{
-    margin: 30px 0;
+.card-text-hover{
+   visibility: hidden;
+}
+
+.card:hover .card-text-hover{
+    visibility: visible;
+    transition: trasnform 0.5s ease;
+}
+
+.form{
     text-align: center;
-    font-size: 16px;
-    color: #666666;
-}
-.signup_link a{
-    color: #2691d9;
-    text-decoration: none;
-}
-.signup_link a:hover{
-    text-decoration: underline;
 }
 
-
-.button-container button {
-    background-color: #e71be0; /* Color de fondo */
-    border: none; /* Remueve el borde */
-    color: #666666; /* Color del texto */
-    padding: 3px 16px; /* Espaciado alrededor del texto */
-    text-align: center; /* Alineación del texto */
-    text-decoration: none; /* Remueve el subrayado */
-    display: inline-block;
-    font-size: 15px;
-    margin: 2px 1px;
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    border-radius: 2px; /* Bordes redondeados */
+.headerproductos{
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background-color: #02585500;
+    padding: 10px;
+    text-align: center;
+    font-size: 36px;
 }
-.login {
-    background: linear-gradient(to right, #cc7ad2, #9467f7);
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+h1{
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: #02585500;
+    padding: 10px;
+    text-align: center;
+    font-size: 72px;
+}
+
+.discount-label {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.card-text {
+    font-family: 'Roboto', sans-serif;
 }
