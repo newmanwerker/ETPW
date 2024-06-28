@@ -130,6 +130,27 @@ transition: 1.4s; /* Transition effect */
     padding: 10px;
     text-align: center;
 }
+.card-container {
+    border: 10px solid #007bff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom  , #096965, #DDDED6, #025855);
+}
+
+#C1{
+    width: 300px; /* Establece un ancho fijo para la card */
+    height: auto;
+    background: linear-gradient(to bottom  , #096965, #DDDED6, #025855);
+}
+
+#C1 img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de la card */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Cubre el espacio disponible sin perder proporción */
+    display: block; /* Elimina cualquier espacio extra alrededor de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
 
 .above-card{
     text-align:center;
@@ -143,7 +164,7 @@ transition: 1.4s; /* Transition effect */
     padding: 10px;
     margin: 10px;
     text-align: center;
-    border: 1px solid #025855;
+    border: 5px solid #025855;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,1);
 }
 
@@ -203,4 +224,33 @@ h1{
 }
 .card-text {
     font-family: 'Roboto', sans-serif;
+}
+
+/* BOTON AGREGAR PRODUCTO NUEVO*/
+#BTN1 {
+    font-family: 'Roboto';
+    font-weight: bold;
+    background-color: #F29422; /* Green background */
+    border: none; /* No border */
+    color: white; /* White text */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 
+    border-radius: 12px; 
+    transition: background-color 0.4s, color 0.4s;
+    transition-duration: 0.4s; /* Transition effect */
+
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 50px;
+
+}
+#BTN1:hover {
+    background-color: #c97b1b; /* Green background on hover */
+    transition: 0.5s;
+    transform: scale(1.1);
 }

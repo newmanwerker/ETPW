@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<<<<<<< HEAD
     <title>Productos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -57,8 +56,6 @@
         </div>
     </nav>
 
-
-<<<<<<< HEAD
     
     <div class="card-container">
         {% for producto in productos %}
@@ -69,24 +66,24 @@
                 <button class="add-to-cart-button" data-price="{{producto.precio}}" onclick="addToCart ('{{ producto.nombre }}','{{producto.precio}}')"></button>
             </div>
         {% endfor %}
-=======
     <div class="title-container">
             <h1>Listar productos</h1>
             <!-- BOTON PARA AGREGAR PRODUCTOS NUEVOS -->
+            <a id="BTN1" href="{% url 'producto_add' %}" class="btn btn-primary">Gestion de productos</a>
             <a href="{% url 'productosAdd' %}" class="btn btn-primary">Agregar Producto Nuevo</a>
         
-        <div class="card-container">
+        <div class="card-container card">
             {% for producto in productos %}
-                <div class="card">
+                <div id="C1" class="card">
                     <img src="{{ producto.imagen.url }}" alt="Foto de {{ producto.nombre }}">
-                    <p>{{ producto.nombre }}</p>
-                    <p>{{ producto.precio }}</p>
+                    <h3>{{ producto.nombre }}</h3>
                     <button class="add-to-cart-button" data-price="{{producto.precio}}" onclick="addToCart ('{{ producto.nombre }}','{{producto.precio}}')"></button>
                 </div>
             {% endfor %}
         </div>
->>>>>>> e946ca4746a839fdeffda898eb6e41b1fec007e1
     </div>
+
+    <!-- Custom JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
