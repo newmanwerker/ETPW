@@ -19,7 +19,7 @@ h2{
 
 /* CARRUSEL */
 .carousel-item img {
-    object-fit: fill; /* or 'contain' depending on your needs */   
+    object-fit: fill; 
 }
 
 .carousel-redirect{
@@ -43,39 +43,39 @@ h2{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%; /* Make the caption as wide as its container */
+    width: 100%; 
 }
 
 /* CARRITO DE COMPRA */
 .add-to-cart-button {
     font-family: 'Roboto';
     font-weight: bold;
-    background-color: #F29422; /* Green background */
-    border: none; /* No border */
-    color: white; /* White text */
-    text-align: center; /* Centered text */
-    text-decoration: none; /* No underline */
+    background-color: #F29422; 
+    border: none;
+    color: white;
+    text-align: center; 
+    text-decoration: none; 
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 12px; /* Rounded corners */
+    cursor: pointer;
+    border-radius: 12px; 
     transition: background-color 0.4s, color 0.4s;
-    transition-duration: 0.4s; /* Transition effect */
+    transition-duration: 0.4s; 
 }
 .add-to-cart-button:before {
-content: attr(data-price); /* Show price by default */
+content: attr(data-price); 
 }
 .add-to-cart-button:hover:before { 
-content: 'Añadir al carrito'; /* Show 'Add to cart' on hover */
-transition: 1.4s; /* Transition effect */
+content: 'Añadir al carrito';
+transition: 1.4s;
 }
 
 .add-to-cart-button{
     padding: 14px 40px;
 }
 .add-to-cart-button:hover {
-    background-color: #c97b1b; /* Green background on hover */
+    background-color: #c97b1b;
     transition: 1.4s;
 }
 .totalContainer {
@@ -144,17 +144,17 @@ transition: 1.4s; /* Transition effect */
 }
 
 #C1{
-    width: 300px; /* Establece un ancho fijo para la card */
+    width: 300px;
     height: auto;
     background: linear-gradient(to bottom  , #096965, #DDDED6, #025855);
 }
 
 #C1 img {
-    max-width: 100%; /* Asegura que la imagen no exceda el ancho de la card */
-    height: auto; /* Mantiene la proporción de la imagen */
-    object-fit: cover; /* Cubre el espacio disponible sin perder proporción */
-    display: block; /* Elimina cualquier espacio extra alrededor de la imagen */
-    margin: auto; /* Centra la imagen horizontalmente */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; 
+    display: block; 
+    margin: auto;
 }
 
 .above-card{
@@ -235,19 +235,18 @@ h1{
 #BTN1 {
     font-family: 'Roboto';
     font-weight: bold;
-    background-color: #F29422; /* Green background */
-    border: none; /* No border */
-    color: white; /* White text */
-    text-align: center; /* Centered text */
-    text-decoration: none; /* No underline */
+    background-color: #F29422;
+    border: 1px solid #3e2609;
+    color: white;
+    text-align: center; 
+    text-decoration: none; 
     display: inline-block;
     font-size: 16px;
     margin: 30px;
     cursor: pointer; 
     border-radius: 12px; 
     transition: background-color 0.4s, color 0.4s;
-    transition-duration: 0.4s; /* Transition effect */
-
+    transition-duration: 0.4s; 
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -255,7 +254,7 @@ h1{
 
 }
 #BTN1:hover {
-    background-color: #c97b1b; /* Green background on hover */
+    background-color: #c97b1b; 
     transition: 0.5s;
     transform: scale(1.1);
 }
@@ -265,19 +264,18 @@ h1{
 .add-to-cart-button2 {
     font-family: 'Roboto';
     font-weight: bold;
-    background-color: #F29422; /* Green background */
-    border: none; /* No border */
-    color: white; /* White text */
-    text-align: center; /* Centered text */
-    text-decoration: none; /* No underline */
+    background-color: #F29422;
+    border: none;
+    color: white;
+    text-align: center; 
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer; 
     border-radius: 12px; 
     transition: background-color 0.4s, color 0.4s;
-    transition-duration: 0.4s; /* Transition effect */
-
+    transition-duration: 0.4s;
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -285,11 +283,11 @@ h1{
 }
 
 .add-to-cart-button2:hover {
-    background-color: #c97b1b; /* Fondo naranja al pasar por encima */
-    transform: scale(1.1); /* Efecto de zoom al pasar por encima */
-    transition: background-color 0.4s, transform 0.4s; /* Suaviza la transición del color y transformación */
+    background-color: #c97b1b;
+    transform: scale(1.1);
+    transition: background-color 0.4s, transform 0.4s; 
 }
 
 .add-to-cart-button2:before {
-    content: attr(data-price); /* Muestra el precio por defecto */
+    content: attr(data-price);
 }

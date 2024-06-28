@@ -4,6 +4,10 @@ from .models import Producto,Categoria
 from .forms import ProductoForm
 
 # Create your views here.
+def gestion(request):
+    context = {}
+    return render(request, 'appJardineria/gestion.html', context)
+
 def productos(request):
     productos = Producto.objects.all()
     context = {'productos': productos}
@@ -12,12 +16,15 @@ def productos(request):
 def home(request):
     context={}
     return render(request, 'appJardineria/home.html', context) 
+
 def checkout(request):
     context={}
     return render(request, 'appJardineria/checkout.html', context)
+
 def nosotros(request):
     context={}
     return render(request, 'appJardineria/nosotros.html', context)
+
 def contacto(request):
     context={}
     return render(request, 'appJardineria/contacto.html', context)
