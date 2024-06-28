@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Lista de categorias</h1><br>
+        <br>
+
+        <button type="button">
+            <a href="{% url 'categoriasAdd' %}">Agregar</a>
+        </button>
+
+        <div id="idMensajes">
+            {% if mensaje %}
+                {{mensaje}}
+            {% endif %}
+        </div>
+        <table>
+            {% if categorias %}
+            <th>Categoria</th>
+                {% for x in categorias %}
+                    <tr>
+                        <td>{{x.nombre_categoria}}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#idMensajes").delay(2000).fadeOut("slow");
+        });
+    </script>
+</body>
+</html>

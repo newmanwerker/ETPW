@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Producto,Categoria
-from .forms import ProductoForm
+from .forms import ProductoForm,CategoriaForm
 
 # Create your views here.
 def productos(request):
@@ -108,3 +108,35 @@ def productos_edit(request,pk):
         context={'mensaje':mensaje, 'productos':productos}
         return render(request, 'appJardineria/productos_list.html', context)
 
+
+def categorias_list(request):
+    categorias=Categoria.objects.all()
+    context={'categorias':categorias}
+    print("Enviando datos de categorias_list")
+    return render(request, 'appJardineria/categorias_list.html', context)
+
+
+def categoriasAdd(request):
+    print("Enviando datos de categorias_add")
+    context = {}
+
+    if request.method == "POST":
+        print("controlador es un post")
+        form = CategoriaForm(request.POST)
+        if form.is_valid():
+            print("formulario es valido")
+            form.save()
+            
+            # limpiar form
+            form = CategoriaForm()
+            context = {'mensaje': "Ok, datos grabados...", "form": form}
+        else:
+            print("formulario no es valido")
+            print(form.errors)
+            context = {'form': form}
+        return render(request, 'appJardineria/categoriasAdd.html', context)
+    
+    else:
+        form = CategoriaForm()
+        context = {'form': form}
+        return render(request, 'appJardineria/categoriasAdd.html', context)
