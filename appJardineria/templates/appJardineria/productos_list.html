@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>LISTA DE PRODUCTOS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="icon" href="https://i.imgur.com/TZnEcFJ.png">
 </head>
@@ -74,33 +74,48 @@
     </nav>
 
     <!-- MODIFOCAR / ELIMINAR PRODUCTOS -->
-    <h1>Editar Productos</h1><br>
-    <br>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-container">
+                    <div class="card-header text-center card">
+                        <h3> | LISTADO DE PRODUCTOS | </h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="idMensajes" class="mb-3">
+                            {% if mensaje %}
+                                <div class="alert alert-info">{{mensaje}}</div>
+                            {% endif %}
+                        </div>
 
-    <button type="button">
-            <a href="{% url 'productosAdd' %}">Agregar</a>
-    </button>
-
-    <div id="idMensajes">
-        {% if mensaje %}
-            {{mensaje}}
-        {% endif %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> | PRODUCTO |</th>
+                                    <th> | ELIMINAR |</th>
+                                    <th> | MODIFICAR |</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if productos %}
+                                    {% for x in productos %}
+                                        <tr>
+                                            <td>{{x.nombre}}</td>
+                                            <td><a href="{% url 'productos_del' pk=x.id_producto %}" class="btn btn-danger">Eliminar</a></td>
+                                            <td><a href="{% url 'productos_edit' pk=x.id_producto %}" class="btn btn-warning">Modificar</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <a id="BTN1" href="{% url 'productos' %}" class="btn btn-secondary">Volver a productos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <table>
-        {% if productos %}
-        <th>Producto</th>
-        <th>Eliminar</th>
-        <th>Modificar</th>
-            {% for x in productos %}
-                <tr>
-                    <td>{{x.nombre}}</td>
-                    <td><a href="{% url 'productos_del' pk=x.id_producto %}">Eliminar</a></td>
-                    <td><a href="{% url 'productos_edit' pk=x.id_producto %}">Modificar</a></td>
-                </tr>
-            {% endfor %}
-        {% endif %}
-    </table>
-    <a id="BTN1" href="{% url 'productos' %}" class="btn btn-primary">Volver a productos </a>
 
     <!-- FOOTER -->
     <footer class="footer mt-auto py-3 border-footer">
@@ -124,12 +139,11 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS and jQuery -->
+    <!-- Custom JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- Custom JS -->
-      <script src="{% static 'js/logic.js' %}"></script>
-      <script>
+    <script src="{% static 'js/logic.js' %}"></script>
+    <script>
         displayCart();
     </script>
 </body>

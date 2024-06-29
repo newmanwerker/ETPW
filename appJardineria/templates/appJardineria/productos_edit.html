@@ -73,26 +73,38 @@
                 </ul>
             </div>
         </nav>
-
-    <!-- Formulario de edición de productos -->
-    <div style="text-align: center;">
-        {% if producto %}
-            <h2>Formulario Actualizar Productos</h2>
-
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{form.as_table}}
-                <input type="submit" name="opcion" value="Actualizar">
-            </form> <br> <br>
-        {% endif %}
-        <div id="idMensajes">
-            {% if mensaje %}
-                {{mensaje}}
-            {% endif %}
+    
+    <!-- FORMULARIO DE EDICION DE PRODUCTOS -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center card">
+                        <h2>Formulario Actualizar Productos</h2>
+                    </div>
+                    <div class="card-body">
+                        {% if producto %}
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <table class="table">
+                                    {{ form.as_table }}
+                                </table>
+                                <input type="submit" name="opcion" value="Actualizar" class="btn btn-warning">
+                            </form> <br> <br>
+                        {% endif %}
+                        <div id="idMensajes">
+                            {% if mensaje %}
+                                <div class="alert alert-info">{{mensaje}}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a id="BTN1" href="{% url 'productos' %}" class="btn btn-secondary">Volver a productos</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <br><br>
-    <a href="{% url 'productos_list'}">Volver</a>
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 border-footer">
