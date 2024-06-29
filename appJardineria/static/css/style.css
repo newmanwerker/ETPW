@@ -304,3 +304,11 @@ h1{
 .dropdown-submenu:hover > .dropdown-menu {
     display: block;
 }
+.FONDO{
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    background-color: #025855;
+    padding: 10px;
+    text-align: center;
+    font-size: 36px;
+}
