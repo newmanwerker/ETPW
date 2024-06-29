@@ -74,28 +74,49 @@
             </div>
         </nav>
 
-        <h1>Lista de categorias</h1><br>
-        <br>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>Lista de categorías</h1>
+                        </div>
+                        <div class="card-body">
+                            <button type="button" class="btn btn-primary mb-3">
+                                <a href="{% url 'categoriasAdd' %}" class="text-white" style="text-decoration: none;">Agregar</a>
+                            </button>
 
-        <button type="button">
-            <a href="{% url 'categoriasAdd' %}">Agregar</a>
-        </button>
+                            <div id="idMensajes">
+                                {% if mensaje %}
+                                    <div class="alert alert-info">{{ mensaje }}</div>
+                                {% endif %}
+                            </div>
 
-        <div id="idMensajes">
-            {% if mensaje %}
-                {{mensaje}}
-            {% endif %}
+                            <table class="table">
+                                {% if categorias %}
+                                <thead>
+                                    <tr>
+                                        <th> | CATEGORIAS CREADAS |</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for x in categorias %}
+                                        <tr>
+                                            <td>{{ x.nombre_categoria }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                {% endif %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <table>
-            {% if categorias %}
-            <h4>Categorias</h4>
-                {% for x in categorias %}
-                    <tr>
-                        <td>{{x.nombre_categoria}}</td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
-        </table>
+
+
+
+        <!-- FOOTER -->
         <footer class="footer mt-auto py-3 border-footer">
             <div class="container">
                 <div class="row">
