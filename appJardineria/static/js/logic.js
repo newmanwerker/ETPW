@@ -118,7 +118,6 @@ $(document).ready(function(){
     });
 });
 
-
 //DESCUENTO DE PRODUCTOS
 var products = document.getElementsByClassName('product');
 
@@ -130,3 +129,26 @@ for (var i = 0; i < products.length; i++) {
         discountLabel.textContent = discount + '% ';
     }
 }
+//MANEJAR EL COMPORTAMIENTO DEL SUBMENU
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle click on submenus to prevent default behavior and propagation
+    document.querySelectorAll('.dropdown-submenu a.dropdown-toggle').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+            if (!this.nextElementSibling.classList.contains('show')) {
+                this.closest('.dropdown-menu').querySelectorAll('.show').forEach(function(subMenu) {
+                    subMenu.classList.remove('show');
+                });
+            }
+            var subMenu = this.nextElementSibling;
+            subMenu.classList.toggle('show');
+            return false;
+        });
+    });
+    
+    // Prevent closing the menu when clicking inside the submenu
+    document.querySelectorAll('.dropdown-menu').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+});

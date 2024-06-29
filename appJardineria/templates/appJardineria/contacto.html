@@ -37,8 +37,20 @@
                         <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownProductos">
-                        <a class="dropdown-item" href="{% url 'productosAdd' %}">Agregar producto</a>
-                        <a class="dropdown-item" href="{% url 'productos' %}">Ver productos</a>
+                        <div class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Productos</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'productosAdd' %}">Agregar producto</a></li>
+                                <li><a class="dropdown-item" href="{% url 'productos' %}">Ver productos</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Categorías</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'categoriasAdd' %}">Agregar categoría</a></li>
+                                <li><a class="dropdown-item" href="{% url 'categorias_list' %}">Ver categorías</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item">
