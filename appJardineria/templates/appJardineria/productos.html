@@ -81,7 +81,8 @@
             <div id="C1" class="card">
                 <img src="{{ producto.imagen.url }}" alt="Foto de {{ producto.nombre }}">
                 <h3>{{ producto.nombre }}</h3>
-                <p>{{ producto.precio }}</p>
+                <p class="card"> $ {{ producto.precio }} </p>
+                <p>{{ producto.descripcion }}</p>
                 <button class="add-to-cart-button2" onclick="addToCart('{{ producto.nombre }}', '{{ producto.precio }}')">Añadir al carrito</button>
             </div>
         {% endfor %}
