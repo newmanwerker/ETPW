@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'nosotros' %}">
-                         <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
+                        <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -43,36 +43,42 @@
                                 <li><a class="dropdown-item" href="{% url 'productos' %}"> Ver productos </a></li>
                                 <li><a class="dropdown-item" href="{% url 'productosAdd' %}"> Agregar producto </a></li>
                                 <li><a class="dropdown-item" href="{% url 'productos_list' %}"> Listado de productos </a></li>
-                                </ul>
+                            </ul>
                         </div>
-                            <div class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">Categorías</a>
-                                <ul class="dropdown-menu">
+                        <div class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Categorías</a>
+                            <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'categorias_list' %}">Ver categorías</a></li>
                                 <li><a class="dropdown-item" href="{% url 'categoriasAdd' %}">Agregar categoría</a></li>
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contacto' %}">
-                            <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
-                        </a>
-                    </li>            
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 45px;">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarCart">
-                            <div id="cartItems"></div>
-                            <div class="dropdown-divider"></div>
-                            <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
-                            <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacto' %}">
+                        <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
+                    </a>
+                </li>            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 40px;">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarCart">
+                        <div id="cartItems"></div>
+                        <div class="dropdown-divider"></div>
+                        <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
+                        <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
+                    </div>
+                </li>
+                <!-- Inicio de sesión -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">
+                        <img src="https://images.vexels.com/media/users/3/136534/isolated/preview/c93f32e11dbf6b5fe3efc5be5554ec50-icono-de-circulo-de-candado.png" alt="Iniciar sesión" style="height: 45px;">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="card col-md-6 mx-auto">
         <div class="card-body">

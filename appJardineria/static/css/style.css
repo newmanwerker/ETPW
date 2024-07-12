@@ -312,3 +312,13 @@ h1{
     text-align: center;
     font-size: 36px;
 }
+
+/* estilo del login */
+.log{
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    background-color: #025855;
+    padding: 10px;
+    text-align: center;
+    font-size: 36px;
+}

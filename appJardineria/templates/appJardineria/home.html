@@ -61,7 +61,7 @@
                 </li>            
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 45px;">
+                        <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 40px;">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarCart">
                         <div id="cartItems"></div>
@@ -69,6 +69,12 @@
                         <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
                         <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
                     </div>
+                </li>
+                <!-- Inicio de sesión -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">
+                        <img src="https://images.vexels.com/media/users/3/136534/isolated/preview/c93f32e11dbf6b5fe3efc5be5554ec50-icono-de-circulo-de-candado.png" alt="Iniciar sesión" style="height: 45px;">
+                    </a>
                 </li>
             </ul>
         </div>

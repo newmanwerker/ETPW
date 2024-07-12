@@ -33,6 +33,10 @@ def checkout(request):
     context={}
     return render(request, 'appJardineria/checkout.html', context)
 
+def login(request):
+    context={}
+    return render(request, 'appJardineria/login.html', context)
+
 def productos_list(request):
     productos=Producto.objects.all()
     context={'productos':productos}
@@ -147,3 +151,11 @@ def categoriasAdd(request):
         form = CategoriaForm()
         context = {'form': form}
         return render(request, 'appJardineria/categoriasAdd.html', context)
+
+
+# Validacion de sesiones #
+def menu(request):
+    request.session["usuario"]="cgarcia"
+    usuario=request.session["usuario"]
+    context = {'usuario':usuario}
+    return render(request, )
