@@ -1,125 +1,118 @@
-{% load static %}
 <!-- HTML -->
+ {% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jardinería Urban Roots / Login</title>
+    <title>Jardinería Urban Roots / Registro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loginstyle.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="icon" href="https://i.imgur.com/TZnEcFJ.png">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg ">
-        <!-- Navbar content -->
-        <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto d-flex">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'home' %}">
-                        <img src="https://i.imgur.com/xuD3K4k.png" alt="Inicio" style="height: 45px;">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'nosotros' %}">
-                        <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownProductos">
-                        <div class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Productos</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'productos' %}"> Ver productos </a></li>
-                                <li><a class="dropdown-item" href="{% url 'productosAdd' %}"> Agregar producto </a></li>
-                                <li><a class="dropdown-item" href="{% url 'productos_list' %}"> Listado de productos </a></li>
-                            </ul>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg ">
+            <!-- Navbar content -->
+            <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto d-flex">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">
+                            <img src="https://i.imgur.com/xuD3K4k.png" alt="Inicio" style="height: 45px;">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'nosotros' %}">
+                            <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownProductos">
+                            <div class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Productos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'productos' %}"> Ver productos </a></li>
+                                    <li><a class="dropdown-item" href="{% url 'productosAdd' %}"> Agregar producto </a></li>
+                                    <li><a class="dropdown-item" href="{% url 'productos_list' %}"> Listado de productos </a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Categorías</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'categorias_list' %}">Ver categorías</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'categoriasAdd' %}">Agregar categoría</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Categorías</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'categorias_list' %}">Ver categorías</a></li>
-                                <li><a class="dropdown-item" href="{% url 'categoriasAdd' %}">Agregar categoría</a></li>
-                            </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacto' %}">
+                            <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
+                        </a>
+                    </li>            
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 40px;">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarCart">
+                            <div id="cartItems"></div>
+                            <div class="dropdown-divider"></div>
+                            <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
+                            <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
                         </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacto' %}">
-                        <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
-                    </a>
-                </li>            
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 40px;">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarCart">
-                        <div id="cartItems"></div>
-                        <div class="dropdown-divider"></div>
-                        <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
-                        <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
-                    </div>
-                </li>
-                <!-- Inicio de sesión -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">
-                        <img src="https://images.vexels.com/media/users/3/136534/isolated/preview/c93f32e11dbf6b5fe3efc5be5554ec50-icono-de-circulo-de-candado.png" alt="Iniciar sesión" style="height: 45px;">
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Contenido -->
-    <div class="card">
-        <form method="POST" action="">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" name="Crear Usuario" >
-        </form>
-    </div>
-
-
-
-    <footer class="footer mt-auto py-3 border-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <strong>© 2024 UrbanRoots</strong>
-                    <p>Todos los derechos reservados.</p>
-                    <p>Dirección: Calle Falsa 123, Ciudad, País</p>
-                    <p>Teléfono: (+123) 456-7890</p>
-                </div>
-                <div class="col-md-4">
-                    <p><strong>Correo Electrónico:</strong> info@nombreempresa.com</p>
-                    <p><strong>Horarios de Atención:</strong> Lunes a Viernes: 9:00 AM - 6:00 PM | Sábados: 10:00 AM - 4:00 PM</p>
-                </div>
-                <div class="col-md-4">
-                    <p><strong>Políticas:</strong> <a href="#">Términos y Condiciones</a> | <a href="#">Política de Privacidad</a></p>
-                    <p><strong>Nuestra misión:</strong> Traer la naturaleza a tu hogar con las mejores plantas y el servicio más dedicado. ¡Gracias por elegirnos para embellecer tus espacios!</p>
-                </div>
+                    </li>
+                    <!-- Inicio de sesión -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <img src="https://images.vexels.com/media/users/3/136534/isolated/preview/c93f32e11dbf6b5fe3efc5be5554ec50-icono-de-circulo-de-candado.png" alt="Iniciar sesión" style="height: 45px;">
+                        </a>
+                    </li>
+                </ul>
             </div>
+        </nav>
+    
+    
+    <div class="center">
+        <h1>Registrarse</h1>
+        <form id="validarLogin" method="post">
+            <div class="txt_field">
+                <input id="usuario" type="text" required>
+                <span></span>
+                <label>Nombre de Usuario</label>
+            </div>
+            <div class="txt_field">
+                <input id="contraseña" type="password" required>
+                <span></span>
+                <label>Contraseña</label>
+            </div>
+            <div class="pass">¿Olvidaste tu contraseña?</div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="signup_link">
+            No tienes una cuenta? <a href="#">Registrate</a>
         </div>
-    </footer>
+    </div> 
 
-    <!-- Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'js/logic.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- Custom JS -->
-      <script src="{% static 'js/logic.js' %}"></script>
-      <script>
-        displayCart();
-    </script>
-     
-
+     <!-- Custom JS -->
+     <script src="{% static 'js/logic.js' %}"></script>
+     <script>
+         displayCart();
+     </script>
 </body>
+</html>
