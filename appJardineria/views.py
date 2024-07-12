@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Producto,Categoria
-from .forms import ProductoForm,CategoriaForm
+from .forms import ProductoForm,CategoriaForm, CreateUserForm
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def gestion(request):
@@ -38,7 +38,12 @@ def login(request):
     return render(request, 'appJardineria/login.html', context)
 
 def registro(request):
-    form=UserCreationForm()
+    form=CreateUserForm()
+
+    if request.method=='POST':
+        form=CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
     context={'form':form}
     return render(request, 'appJardineria/registro.html', context)
 
