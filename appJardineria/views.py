@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Producto,Categoria
 from .forms import ProductoForm,CategoriaForm
-
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def gestion(request):
     context = {}
@@ -36,6 +36,11 @@ def checkout(request):
 def login(request):
     context={}
     return render(request, 'appJardineria/login.html', context)
+
+def registro(request):
+    form=UserCreationForm()
+    context={'form':form}
+    return render(request, 'appJardineria/registro.html', context)
 
 def productos_list(request):
     productos=Producto.objects.all()
