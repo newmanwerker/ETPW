@@ -322,3 +322,11 @@ h1{
     text-align: center;
     font-size: 36px;
 }
+
+.hello-msg{
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    font-size: 36px;
+}

@@ -12,7 +12,6 @@
 
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg ">
         <!-- Navbar content -->
         <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
@@ -71,12 +70,14 @@
                 </li>
                 <!-- Inicio de sesión -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">
-                        <img src="https://images.vexels.com/media/users/3/136534/isolated/preview/c93f32e11dbf6b5fe3efc5be5554ec50-icono-de-circulo-de-candado.png" alt="Iniciar sesión" style="height: 45px;">
+                    <a class="nav-link" href="{% url 'loginPage' %}">
+                        <img src="https://i.imgur.com/F2aqgap.png" alt="Iniciar sesión" style="height: 50px;">
                     </a>
                 </li>
             </ul>
         </div>
+        <span class="hello-msg" >Hola, {{request.user}} </span>
+        <span><a class="hello-msg" href="{% url 'logoutUser' %}">Cerrar sesión</a></span>
     </nav>
 
     <!-- Texto Imagen1 -->
