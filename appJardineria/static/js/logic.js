@@ -85,38 +85,6 @@ $(document).ready(function(){
     });
 });
 
-//VALIDAR LOGIN
-$(document).ready(function(){
-    $("#validarLogin").submit(function(event){
-        // Evitar que el formulario se envíe automáticamente
-        event.preventDefault();
-        
-        // validaciones
-        var usuario = $("#usuario").val();
-        var contraseña = $("#contraseña").val();
-
-        // usuario: largo entre 3 y 20 caracteres
-        if(usuario.length < 3 || usuario.length > 20){
-            alert("El Usuario debe tener entre 3 y 20 caracteres.");
-            return;
-        }
-        // contraseña: largo entre 6 y 20 caracteres
-        if(contraseña.length < 6 || contraseña.length > 20){
-            alert("La Contraseña debe tener entre 6 y 20 caracteres.");
-            return;
-        }
-        else{
-            // validacion aceptada
-            alert("¡Login exitoso!");
-
-            // Redirigir a la página principal
-            window.location.replace("Main.html");
-
-            // Limpiar el login
-            $("#validarLogin")[0].reset();
-        }       
-    });
-});
 
 //DESCUENTO DE PRODUCTOS
 var products = document.getElementsByClassName('product');

@@ -39,7 +39,6 @@ def login(request):
 
 def registro(request):
     form=CreateUserForm()
-
     if request.method=='POST':
         form=CreateUserForm(request.POST)
         if form.is_valid():
