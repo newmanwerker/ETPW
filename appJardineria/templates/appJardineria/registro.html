@@ -12,6 +12,7 @@
     <link rel="icon" href="https://i.imgur.com/TZnEcFJ.png">
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg ">
         <!-- Navbar content -->
         <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
@@ -69,10 +70,17 @@
                     </div>
                 </li>
                 <!-- Inicio de sesión -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'loginPage' %}">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="https://i.imgur.com/F2aqgap.png" alt="Iniciar sesión" style="height: 50px;">
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <span class="dropdown-item-text">Hola, {{ request.user }}</span>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'loginPage' %}">Iniciar sesión</a>
+                        <a class="dropdown-item" href="{% url 'registro' %}">Registrarse</a>
+                        <a class="dropdown-item" href="{% url 'logoutUser' %}">Cerrar sesión</a>
+                    </div>
                 </li>
             </ul>
         </div>
