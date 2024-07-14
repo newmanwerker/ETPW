@@ -5,11 +5,13 @@ from .forms import ProductoForm,CategoriaForm, CreateUserForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def gestion(request):
     context = {}
     return render(request, 'appJardineria/gestion.html', context)
 
+@login_required(login_url='loginPage')
 def productos(request):
     productos = Producto.objects.all()
     context = {'productos': productos}
@@ -19,6 +21,7 @@ def home(request):
     context={}
     return render(request, 'appJardineria/home.html', context) 
 
+@login_required(login_url='loginPage')
 def checkout(request):
     context={}
     return render(request, 'appJardineria/checkout.html', context)
@@ -31,42 +34,49 @@ def contacto(request):
     context={}
     return render(request, 'appJardineria/contacto.html', context)
 
+@login_required(login_url='loginPage')
 def checkout(request):
     context={}
     return render(request, 'appJardineria/checkout.html', context)
 
 def loginPage(request):
-
-    if request.method=='POST':
-        username=request.POST.get('username')
-        password=request.POST.get('password')
-        user=authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.info(request, 'Usuario o contraseña incorrectos')
-    context={}
-    return render(request, 'appJardineria/loginPage.html', context)
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        if request.method=='POST':
+            username=request.POST.get('username')
+            password=request.POST.get('password')
+            user=authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.info(request, 'Usuario o contraseña incorrectos')
+        context={}
+        return render(request, 'appJardineria/loginPage.html', context)
 
 def registro(request):
-    form=CreateUserForm()
-    if request.method=='POST':
-        form=CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user=form.cleaned_data.get('username')
-            messages.success(request, 'Cuenta creada correctamente para ' + user)
-            return redirect('loginPage')
-    context={'form':form}
-    return render(request, 'appJardineria/registro.html', context)
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        form=CreateUserForm()
+        if request.method=='POST':
+            form=CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user=form.cleaned_data.get('username')
+                messages.success(request, 'Cuenta creada correctamente para ' + user)
+                return redirect('loginPage')
+        context={'form':form}
+        return render(request, 'appJardineria/registro.html', context)
 
 
 
 def logoutUser(request):
     logout(request)
-    return redirect('home')
+    return redirect('loginPage')
 
+@login_required(login_url='loginPage')
 def productos_list(request):
     productos=Producto.objects.all()
     context={'productos':productos}
@@ -74,6 +84,7 @@ def productos_list(request):
     return render(request, 'appJardineria/productos_list.html', context)
 
 
+@login_required(login_url='loginPage')
 def productosAdd(request):
     print("Enviando datos de productos_add")
     context = {}
@@ -120,7 +131,7 @@ def productos_del(request,pk):
         return render(request, 'appJardineria/productos_list.html', context)
     
 
-
+@login_required(login_url='loginPage')
 def productos_edit(request,pk):
     try:
         producto=Producto.objects.get(id_producto=pk)
@@ -149,14 +160,14 @@ def productos_edit(request,pk):
         context={'mensaje':mensaje, 'productos':productos}
         return render(request, 'appJardineria/productos_list.html', context)
 
-
+@login_required(login_url='loginPage')
 def categorias_list(request):
     categorias=Categoria.objects.all()
     context={'categorias':categorias}
     print("Enviando datos de categorias_list")
     return render(request, 'appJardineria/categorias_list.html', context)
 
-
+@login_required(login_url='loginPage')
 def categoriasAdd(request):
     print("Enviando datos de categorias_add")
     context = {}
