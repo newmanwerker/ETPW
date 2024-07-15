@@ -95,6 +95,7 @@
                 <img src="{{ producto.imagen.url }}" alt="Foto de {{ producto.nombre }}">
                 <h3>{{ producto.nombre }}</h3>
                 <p class="card"> $ {{ producto.precio }} </p>
+                <p class="card"> Cantidad: {{ producto.cantidad }} </p>
                 <p>{{ producto.descripcion }}</p>
                 <button class="add-to-cart-button2" onclick="addToCart('{{ producto.nombre }}', '{{ producto.precio }}')">Añadir al carrito</button>
             </div>
