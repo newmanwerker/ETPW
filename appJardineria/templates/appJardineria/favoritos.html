@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Favoritos</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg ">
+    <!-- Navbar content -->
+    <a class="navbar-brand" href="#"><img src="https://i.imgur.com/TZnEcFJ.png" alt="Logo" style="width:120px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto d-flex">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">
+                    <img src="https://i.imgur.com/xuD3K4k.png" alt="Inicio" style="height: 45px;">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'nosotros' %}">
+                    <img src="https://i.imgur.com/sdcYDQB.png" alt="Nosotros" style="height: 45px;">
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProductos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="https://i.imgur.com/3sqABzA.png" alt="Productos" style="height: 45px;">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownProductos">
+                    <div class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Productos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'productos' %}"> Ver productos </a></li>
+                            <li><a class="dropdown-item" href="{% url 'productosAdd' %}"> Agregar producto </a></li>
+                            <li><a class="dropdown-item" href="{% url 'productos_list' %}"> Listado de productos </a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Categorías</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'categorias_list' %}">Ver categorías</a></li>
+                            <li><a class="dropdown-item" href="{% url 'categoriasAdd' %}">Agregar categoría</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contacto' %}">
+                    <img src="https://i.imgur.com/nZ2FG0h.png" alt="Contacto" style="height: 40px;">
+                </a>
+            </li>            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarCart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="https://i.imgur.com/jY2qD6l.png" alt="Carrito" style="height: 40px;">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarCart">
+                    <div id="cartItems"></div>
+                    <div class="dropdown-divider"></div>
+                    <button onclick="clearCart()" class="dropdown-item">Limpiar carrito</button>
+                    <a class="dropdown-item" href="{% url 'checkout' %}">Finalizar pago</a>
+                </div>
+            </li>
+            <!-- Inicio de sesión -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="https://i.imgur.com/F2aqgap.png" alt="Iniciar sesión" style="height: 50px;">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <span class="dropdown-item-text">Hola, {{ request.user }}</span>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'loginPage' %}">Iniciar sesión</a>
+                    <a class="dropdown-item" href="{% url 'registro' %}">Registrarse</a>
+                    <a class="dropdown-item" href="{% url 'logoutUser' %}">Cerrar sesión</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+    
+    <h2 style="text-align: center;">Mis favoritos</h2>
+    <div class="container">
+        <div class="row">
+            {% for favorito in favoritos %}
+                <div class="col-md-4 ">
+                    <div class="card mb-4"  style=" background: linear-gradient(to bottom  , #096965, #DDDED6, #025855);">
+                        <img class="card-img-top" src="{{ favorito.producto.imagen.url }}" style="height: 250px;" alt="Foto de {{ favorito.producto.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ favorito.producto.nombre }}</h5>
+                            <p class="card-text">{{ favorito.producto.descripcion }}</p>
+                            <p class="card-text">Precio: $ {{ favorito.producto.precio }}</p>
+                            <a href="{% url 'eliminar_favorito' favorito.producto.id_producto %}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+      <script src="{% static 'js/logic.js' %}"></script>
+      <script>
+        displayCart();
+    </script>
+</body>
+</html>
