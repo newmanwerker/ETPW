@@ -6,6 +6,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Producto, Favorito
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 def gestion(request):
     context = {}
@@ -200,3 +204,31 @@ def menu(request):
     usuario=request.session["usuario"]
     context = {'usuario':usuario}
     return render(request, )
+
+
+
+
+@login_required(login_url='loginPage')
+def agregar_favorito(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    favorito, created = Favorito.objects.get_or_create(usuario=request.user, producto=producto)
+    if created:
+        messages.success(request, f'{producto.nombre} añadido a tus favoritos')
+    else:
+        messages.info(request, f'{producto.nombre} ya está en tu lista de favoritos')
+    return redirect('productos')
+
+@login_required(login_url='loginPage')
+def eliminar_favorito(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    favorito = Favorito.objects.filter(usuario=request.user, producto=producto).first()
+    if favorito:
+        favorito.delete()
+        messages.success(request, f'{producto.nombre} eliminado de tus favoritos')
+    return redirect('ver_favoritos')
+
+@login_required(login_url='loginPage')
+def ver_favoritos(request):
+    favoritos = Favorito.objects.filter(usuario=request.user)
+    context = {'favoritos': favoritos}
+    return render(request, 'appJardineria/favoritos.html', context)

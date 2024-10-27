@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -18,3 +19,10 @@ class Producto(models.Model):
     descripcion      = models.TextField( blank=True, null=True)
     def __str__(self):
         return str(self.nombre)
+
+class Favorito(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.producto.nombre}"

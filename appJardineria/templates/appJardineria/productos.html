@@ -42,6 +42,7 @@
                                 <li><a class="dropdown-item" href="{% url 'productos' %}"> Ver productos </a></li>
                                 <li><a class="dropdown-item" href="{% url 'productosAdd' %}"> Agregar producto </a></li>
                                 <li><a class="dropdown-item" href="{% url 'productos_list' %}"> Listado de productos </a></li>
+                                <li><a class="dropdown-item" href="{% url 'ver_favoritos' %}"> Ver favoritos </a></li>
                             </ul>
                         </div>
                         <div class="dropdown-submenu">
@@ -89,19 +90,25 @@
 
     
     <!-- CONTENIDO DE LA PÁGINA -->
-    <div class="card-container">
-        {% for producto in productos %}
-            <div id="C1" class="card">
-                <img src="{{ producto.imagen.url }}" alt="Foto de {{ producto.nombre }}">
-                <h3>{{ producto.nombre }}</h3>
-                <p class="card"> $ {{ producto.precio }} </p>
-                <p class="card"> Cantidad: {{ producto.cantidad }} </p>
-                <p>{{ producto.descripcion }}</p>
-                <button class="add-to-cart-button2" onclick="addToCart('{{ producto.nombre }}', '{{ producto.precio }}')">Añadir al carrito</button>
+    <div class="container">
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-4">
+                <div id="C1" class="card">
+                    <img src="{{ producto.imagen.url }}" alt="Foto de {{ producto.nombre }}" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ producto.nombre }}</h3>
+                        <p class="card-text"> $ {{ producto.precio }} </p>
+                        <p class="card-text">{{ producto.descripcion }}</p>
+                        <!-- Asegúrate de que producto.id_producto (o producto.id si es diferente) esté presente -->
+                        <button class="add-to-cart-button2" onclick="addToCart('{{ producto.nombre }}', '{{ producto.precio }}')">Añadir al carrito</button>
+                        <a href="{% url 'agregar_favorito' producto.id_producto %}" class="btn btn-danger">♥️</a>
+                    </div>
+                </div>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-
     <!-- FOOTER -->
     <footer class="footer mt-auto py-3 border-footer">
         <div class="container">
